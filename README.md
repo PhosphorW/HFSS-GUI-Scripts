@@ -15,7 +15,7 @@ As for the confidential processing parameters, some data has been removed from t
 ## Usage
 - New/Opne Project -> New/Open HFSS Design -> Menu-Tools -> Run scripts -> Choose xxx.py
 
-![](http://oxlxmrsto.bkt.clouddn.com/17-12-16/17932182.jpg)
+![](https://github.com/PhosphorW/HFSS-GUI-Scripts/blob/master/images/Scripts%20Ver1.2.0.jpg)
 
 #### Panels from top to end:
 1. Panel1: `Scale_Unit Panel` Set unit scale in HFSS view, 'um' or 'mm'.
