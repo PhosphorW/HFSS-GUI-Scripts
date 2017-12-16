@@ -16,15 +16,16 @@ As for the confidential processing parameters, some data has been removed from t
 - New/Opne Project -> New/Open HFSS Design -> Menu-Tools -> Run scripts -> Choose xxx.py
 
 ## ChangeLog
-[Ver 1.2.1] --20171212
---- Fixed:
-        1. 修复Panel3金属材料无法生成bug
---- Refactored:
-        1. 优化Panel1生成介质盒的显示问题
+### [Ver 1.2.1] - 2017-12-12
+#### Fixed:
+- 修复Panel3金属材料无法生成bug
 
-[Ver 1.2.0] --20171124
---- Added:
-        1. Panel3: Create_Metal_Material
+#### Refactored:
+- 优化Panel1生成介质盒的显示问题
+
+### [Ver 1.2.0] - 2017-11-24
+- Added:
+1. Panel3: Create_Metal_Material
 
 [Ver 1.1.2] --20171124
 --- Added:
