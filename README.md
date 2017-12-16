@@ -15,40 +15,55 @@ As for the confidential processing parameters, some data has been removed from t
 ## Usage
 - New/Opne Project -> New/Open HFSS Design -> Menu-Tools -> Run scripts -> Choose xxx.py
 
+![](http://oxlxmrsto.bkt.clouddn.com/17-12-16/17932182.jpg)
+
+#### Panels from top to end:
+1. Panel1: `Scale_Unit Panel` Set unit scale in HFSS view, 'um' or 'mm'.
+2. Panel2: `Create_Media_Box Panel` Create media lawyers in IC chip.
+3. Panel3: `Create_Metal_Material Panel` Generate metal material
+
+#### Exist Functions:
+- SetModelUnits()
+- CreateBox()
+- AddMaterial()
+
 ## ChangeLog
 ### [Ver 1.2.1] - 2017-12-12
 #### Fixed:
-- 修复Panel3金属材料无法生成bug
+- Fix the bug that cannot generate 2 or more metal materials together.
 
 #### Refactored:
-- 优化Panel1生成介质盒的显示问题
+- Automatically adjust the view after using Panel1 to create box.
 
 ### [Ver 1.2.0] - 2017-11-24
-- Added:
-1. Panel3: Create_Metal_Material
+#### Added:
+- Panel: Create_Metal_Material
 
-[Ver 1.1.2] --20171124
---- Added:
-        1. Function: AddMaterial()
-        2. Create_Media_Box Panel 材料生成
-        3. Create_Media_Box Panel 参数报错窗口
---- Refactored:
-        1. 优化窗口最大化及拖拽问题
+### [Ver 1.1.2] - 2017-11-24
+#### Added:
+- Function: AddMaterial()
+- Create_Media_Box Panel: Generate material
+- Create_Media_Box Panel: Error message window
 
-[Ver 1.1.1] --20171120
---- Refactored:
-        1. 优化界面
---- Fixed:
-        1. 修复脚本卡顿问题
+#### Refactored:
+- Refactor the maximized window and its dragging problem.
 
-[Ver 1.1.0] --20171120
---- Added：
-        1. Function: SetModelUnits()
-        2. Panel2: Scale_Unit
---- Changed:
-        1. Media_Box单位可选择，不再默认为'um'
+### [Ver 1.1.1] - 2017-11-20
+#### Refactored:
+- Optimize interface.
 
-[Ver 1.0.0] --20171120
---- Added：
-        1. Function: CreateBox()
-        2. Panel1: Create_Media_Box
+#### Fixed:
+- Fix some stutters in scripts.
+
+### [Ver 1.1.0] - 2017-11-20
+#### Added：
+- Function: SetModelUnits()
+- Panel: Scale_Unit
+
+#### Changed:
+- Create_Media_Box unit can be choose.
+
+### [Ver 1.0.0] - 2017-11-20
+#### Added：
+- Function: CreateBox()
+- Panel: Create_Media_Box
