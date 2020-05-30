@@ -13,8 +13,8 @@ clr.AddReference('System.Drawing')
 
 from System.Drawing import Color, Point
 from System.Windows.Forms import (Application, BorderStyle, Button,
-    Form, FormBorderStyle, Label, Panel, Screen, TextBox, 
-    RadioButton, MessageBox, CheckBox)
+                                  Form, FormBorderStyle, Label, Panel, Screen, TextBox,
+                                  RadioButton, MessageBox, CheckBox)
 
 units = "um"
 
@@ -24,56 +24,61 @@ metal_material_name = ("M1", "M2", "M3", "M4", "M5", "M6", "M7")
 # metal_material_cond:add metal material conductive you want to add, change the num below
 metal_material_cond = (1, 1, 1, 1, 1, 1, 1)
 
-def SetModelUnits(unit,rescale=False):
+
+def SetModelUnits(unit, rescale=False):
     oEditor.SetModelUnits(
         [
             "NAME:Units Parameter",
-            "Units:="       , unit,
-            "Rescale:="     , rescale
+            "Units:=", unit,
+            "Rescale:=", rescale
         ])
     # units = unit
 
-def CreateBox(name,un,c1,c2,c3,trans,material,Xpos,Ypos,Zpos,Xsize,Ysize,Zsize):
+
+def CreateBox(name, un, c1, c2, c3, trans, material, Xpos, Ypos, Zpos, Xsize, Ysize, Zsize):
     oEditor.CreateBox(
         [
             "NAME:BoxParameters",
-            "XPosition:="       , str(Xpos)+un,
-            "YPosition:="       , str(Ypos)+un,
-            "ZPosition:="       , str(Zpos)+un,
-            "XSize:="       , str(Xsize)+un,
-            "YSize:="       , str(Ysize)+un,
-            "ZSize:="       , str(Zsize)+un
-        ], 
+            "XPosition:=", str(Xpos) + un,
+            "YPosition:=", str(Ypos) + un,
+            "ZPosition:=", str(Zpos) + un,
+            "XSize:=", str(Xsize) + un,
+            "YSize:=", str(Ysize) + un,
+            "ZSize:=", str(Zsize) + un
+        ],
         [
             "NAME:Attributes",
-            "Name:="        , name,
-            "Flags:="       , "",
-            "Color:="       , "("+c1+" "+c2+" "+c3+")",
-            "Transparency:="    , trans,
+            "Name:=", name,
+            "Flags:=", "",
+            "Color:=", "(" + c1 + " " + c2 + " " + c3 + ")",
+            "Transparency:=", trans,
             "PartCoordinateSystem:=", "Global",
-            "UDMId:="       , "",
-            "MaterialValue:="   , "\""+material+"\"",
-            "SolveInside:="     , True,
-            "IsMaterialEditable:="  , True
+            "UDMId:=", "",
+            "MaterialValue:=", "\"" + material + "\"",
+            "SolveInside:=", True,
+            "IsMaterialEditable:=", True
         ])
 
-def AddMaterial(name,per=1,cond=0):
+
+def AddMaterial(name, per=1, cond=0):
     oDefinitionManager.AddMaterial(
         [
-            "NAME:"+name,
+            "NAME:" + name,
             "CoordinateSystemType:=", "Cartesian",
-            "BulkOrSurfaceType:="   , 1,
+            "BulkOrSurfaceType:=", 1,
             [
                 "NAME:PhysicsTypes",
-                "set:="         , ["Electromagnetic"]
+                "set:=", ["Electromagnetic"]
             ],
-            "permittivity:="    , per,
-            "conductivity:="    , cond
+            "permittivity:=", per,
+            "conductivity:=", cond
         ])
 
+
 class HFSS(Form):
+
     def __init__(self):
-        self.Text = "HFSS Scripts -- By Phower_CBL"
+        self.Text = "HFSS_GUI_Script_#1 (By: Phower)"
 
         screenSize = Screen.GetWorkingArea(self)
         self.Width = 430
@@ -89,7 +94,7 @@ class HFSS(Form):
         self.Controls.Add(self.panel2)
         self.Controls.Add(self.panel3)
 
-    def setupPanel1(self):  #介质层BOX Panel
+    def setupPanel1(self):  # 介质层BOX Panel
         self.panel1 = Panel()
         self.panel1.Text = "Media_Box Panel"
         self.panel1.Width = self.Width
@@ -184,7 +189,7 @@ class HFSS(Form):
         self.panel2.Controls.Add(self.label3)
         self.panel2.Controls.Add(self.textbox3)
         self.panel2.Controls.Add(self.button3)
-    
+
     def setupPanel3(self):
         self.panel3 = Panel()
         self.panel3.Width = self.Width
@@ -205,42 +210,42 @@ class HFSS(Form):
 
         self.check1 = CheckBox()
         self.check1.Text = "M1"
-        self.check1.Location = Point(25,50)
+        self.check1.Location = Point(25, 50)
         self.check1.Width = 90
 
         self.check2 = CheckBox()
         self.check2.Text = "M2-8"
-        self.check2.Location = Point(115,50)
+        self.check2.Location = Point(115, 50)
         self.check2.Width = 90
 
         self.check3 = CheckBox()
         self.check3.Text = "M9"
-        self.check3.Location = Point(205,50)
+        self.check3.Location = Point(205, 50)
         self.check3.Width = 90
 
         self.check4 = CheckBox()
         self.check4.Text = "M10(UTM)"
-        self.check4.Location = Point(295,50)
+        self.check4.Location = Point(295, 50)
         self.check4.Width = 90
 
         self.check5 = CheckBox()
         self.check5.Text = "Via1-7"
-        self.check5.Location = Point(25,75)
+        self.check5.Location = Point(25, 75)
         self.check5.Width = 90
 
         self.check6 = CheckBox()
         self.check6.Text = "Via8"
-        self.check6.Location = Point(115,75)
+        self.check6.Location = Point(115, 75)
         self.check6.Width = 90
 
         self.check7 = CheckBox()
         self.check7.Text = "Via9"
-        self.check7.Location = Point(205,75)
+        self.check7.Location = Point(205, 75)
         self.check7.Width = 90
 
         self.check8 = CheckBox()
         self.check8.Text = "全选"
-        self.check8.Location = Point(295,75)
+        self.check8.Location = Point(295, 75)
         self.check8.Width = 90
         self.check8.CheckedChanged += self.P3C8_update
 
@@ -272,14 +277,14 @@ class HFSS(Form):
         SetModelUnits(temp)
 
     def checkedChanged(self, sender, args):
-    	global units
+        global units
         if not sender.Checked:
             return
         if sender.Text == "mm":
             units = "mm"
         else:
             units = "um"
-    
+
     def P3_update1(self, sender, args):
         temp = False
 
@@ -291,9 +296,9 @@ class HFSS(Form):
         check_6 = self.check6.Checked
         check_7 = self.check7.Checked
 
-        for x in range(1,8):
-            if locals()['check_'+str(x)] == True:
-                AddMaterial(metal_material_name[x-1],1,metal_material_cond[x-1])
+        for x in range(1, 8):
+            if locals()['check_' + str(x)] == True:
+                AddMaterial(metal_material_name[x - 1], 1, metal_material_cond[x - 1])
                 temp = True
 
         if temp == True:
@@ -309,8 +314,8 @@ class HFSS(Form):
             self.check8.Text = "全选"
         else:
             MessageBox.Show("请选择材料！！")
-            
-    def P3C8_update(self, sender,args):
+
+    def P3C8_update(self, sender, args):
         # MessageBox.Show("selected"+"\n"+self.check8.CheckState.ToString())
         if self.check8.Checked == True:
             self.check1.CheckState = self.check1.CheckState.Checked
@@ -329,7 +334,7 @@ class HFSS(Form):
             self.check5.CheckState = self.check5.CheckState.Unchecked
             self.check6.CheckState = self.check6.CheckState.Unchecked
             self.check7.CheckState = self.check7.CheckState.Unchecked
-            self.check8.Text = "全选"   
+            self.check8.Text = "全选"
 
 SetModelUnits('um')
 form = HFSS()
